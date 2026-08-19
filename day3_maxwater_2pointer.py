@@ -70,3 +70,6 @@ if __name__ == "__main__":
     result = max_area(nums)
     print("Maximum area of water that can be stored:", result)
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+
