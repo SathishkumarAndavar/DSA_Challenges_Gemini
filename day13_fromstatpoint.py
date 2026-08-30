@@ -1,10 +1,10 @@
 
-Execution Trace ExamplesInput (1 2 3 4 5): Middle is index 2 (val 3)
-.Output: 3 4 5Input (1 2 3 4 5 6): Middle is index 3 (val 4, second middle).
-Output: 4 5 6
-Complexity AnalysisTime Complexity: 
-$\mathcal{O}(N)$ — Single pass through the list.
-Space Complexity: $\mathcal{O}(1)$ — Uses constant auxiliary memory.
+# Execution Trace ExamplesInput (1 2 3 4 5): Middle is index 2 (val 3)
+# .Output: 3 4 5Input (1 2 3 4 5 6): Middle is index 3 (val 4, second middle).
+# Output: 4 5 6
+# Complexity AnalysisTime Complexity: 
+# $\mathcal{O}(N)$ — Single pass through the list.
+# Space Complexity: $\mathcal{O}(1)$ — Uses constant auxiliary memory.
 
 class linked_list:
     def __init__(self, val=0, next=None):
