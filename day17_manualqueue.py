@@ -56,58 +56,6 @@ if __name__ == '__main__':
   print("Popped element:", myQueue.pop())  # Returns 1
   print("Is queue empty?", myQueue.empty())  # Returns False
 
-You fixed the `self` parameters and instance references, but `pop()` and `peek()` are still pulling from `self.instack` instead of calling `self.transfer()` and pulling from `self.outstack`.
-
-Pulling from `instack` keeps LIFO order (Last-In, First-Out) instead of restoring FIFO queue order (First-In, First-Out).
-
----
-
-### Remaining Logic Bugs
-
-1. **`pop()` logic:** Needs to call `self.transfer()` first, then pop from `self.outstack`.
-2. **`peek()` logic:** Needs to call `self.transfer()` first, then return the last element of `self.outstack` (`self.outstack[-1]`).
-
----
-
-### Corrected Code
-
-```python
-class MyQueue:
-
-    def __init__(self):
-        self.instack = []
-        self.outstack = []
-
-    def push(self, x):
-        self.instack.append(x)
-
-    def transfer(self):
-        if not self.outstack:
-            while self.instack:
-                self.outstack.append(self.instack.pop())
-
-    def pop(self):
-        self.transfer()  # Ensure outstack has elements in FIFO order
-        return self.outstack.pop()
-
-    def peek(self):
-        self.transfer()  # Ensure outstack has elements in FIFO order
-        return self.outstack[-1]
-
-    def empty(self):
-        return not self.instack and not self.outstack
-
-
-if __name__ == "__main__":
-    myQueue = MyQueue()
-
-    myQueue.push(1)
-    myQueue.push(2)
-
-    print("Peek front element:", myQueue.peek())  # Returns 1
-    print("Popped element:", myQueue.pop())  # Returns 1
-    print("Is queue empty?", myQueue.empty())  # Returns False
-
 # ```
 
 # ---
